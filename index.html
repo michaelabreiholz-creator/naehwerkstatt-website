@@ -242,22 +242,47 @@
     .kategorie-overlay {
       position: absolute;
       bottom: 0; left: 0; right: 0;
-      background: linear-gradient(transparent, rgba(60,30,15,0.85));
-      padding: 28px 16px 16px;
+      background: linear-gradient(transparent, rgba(40,20,8,0.92));
+      padding: 40px 16px 16px;
       color: var(--creme);
+      transition: background 0.3s;
+    }
+
+    .kategorie-vorschau:hover .kategorie-overlay {
+      background: linear-gradient(transparent, rgba(40,20,8,0.97));
     }
 
     .kategorie-overlay span {
       display: block;
-      font-size: 1rem;
+      font-size: 1.05rem;
+      font-weight: bold;
       letter-spacing: 0.5px;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
     .kategorie-overlay small {
-      font-size: 0.8rem;
-      opacity: 0.7;
+      font-size: 0.78rem;
+      opacity: 0.75;
       font-style: italic;
+    }
+
+    .kategorie-overlay .oeffnen {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      background: var(--gelb);
+      color: var(--dunkelbraun);
+      padding: 4px 12px;
+      border-radius: 20px;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .kategorie-vorschau:hover .oeffnen {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* LIGHTBOX */
@@ -350,47 +375,67 @@
     .kontakt-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 60px;
+      gap: 50px;
       max-width: 1000px;
       margin: 0 auto;
       align-items: start;
     }
 
-    .kontakt-info { text-align: center; }
-    .kontakt-item { margin-bottom: 28px; }
+    .kontakt-info { display: flex; flex-direction: column; gap: 14px; }
+
+    .kontakt-item {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      background: rgba(255,255,255,0.08);
+      padding: 18px 22px;
+      border-radius: 12px;
+      transition: background 0.2s;
+    }
+
+    .kontakt-item:hover { background: rgba(255,255,255,0.13); }
+
+    .kontakt-icon {
+      width: 46px;
+      height: 46px;
+      background: var(--gelb);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .kontakt-icon svg { width: 20px; height: 20px; fill: var(--dunkelbraun); }
+
+    .kontakt-item-text { text-align: left; }
 
     .kontakt-item .label {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       letter-spacing: 2px;
       color: var(--gelb);
-      margin-bottom: 8px;
+      margin-bottom: 5px;
       text-transform: uppercase;
     }
 
     .kontakt-item .value {
-      font-size: 1.05rem;
-      color: rgba(250,246,239,0.85);
-      line-height: 1.6;
+      font-size: 1rem;
+      color: rgba(250,246,239,0.9);
+      line-height: 1.55;
     }
 
     .kontakt-item a {
-      color: var(--hellgelb);
+      color: rgba(250,246,239,0.9);
       text-decoration: none;
     }
 
-    .kontakt-item a:hover { text-decoration: underline; }
-
-    .kontakt-sep {
-      width: 1px;
-      height: 32px;
-      background: rgba(250,246,239,0.15);
-      margin: 0 auto 28px;
-    }
+    .kontakt-item a:hover { color: var(--hellgelb); text-decoration: underline; }
 
     .kontakt-map iframe {
       width: 100%;
-      height: 300px;
+      height: 320px;
       border: none;
+      border-radius: 12px;
       filter: sepia(20%) saturate(80%);
     }
 
@@ -667,7 +712,8 @@
           <img src="polster/WhatsApp_Image_2026-04-09_at_21.34.50dfaga.jpeg" alt="Boot- & Campingpolster">
           <div class="kategorie-overlay">
             <span>Boot- &amp; Campingpolster</span>
-            <small>3 Fotos ansehen</small>
+            <small>3 Fotos</small>
+            <div class="oeffnen">Galerie öffnen →</div>
           </div>
         </div>
       </div>
@@ -677,7 +723,8 @@
           <img src="strandkorb/WhatsApp_Image_2026-04-09_at_21.58.57.jpeg" alt="Strandkorb">
           <div class="kategorie-overlay">
             <span>Strandkorb</span>
-            <small>5 Fotos ansehen</small>
+            <small>5 Fotos</small>
+            <div class="oeffnen">Galerie öffnen →</div>
           </div>
         </div>
       </div>
@@ -687,7 +734,8 @@
           <img src="taschen/WhatsApp_Image_2026-04-09_at_21.39.46.jpeg" alt="Taschen">
           <div class="kategorie-overlay">
             <span>Taschen</span>
-            <small>9 Fotos ansehen</small>
+            <small>9 Fotos</small>
+            <div class="oeffnen">Galerie öffnen →</div>
           </div>
         </div>
       </div>
@@ -697,7 +745,8 @@
           <img src="autopolsterei/WhatsApp_Image_2026-04-09_at_22.24.52.jpeg" alt="Autopolsterei">
           <div class="kategorie-overlay">
             <span>Autopolsterei</span>
-            <small>3 Fotos ansehen</small>
+            <small>3 Fotos</small>
+            <div class="oeffnen">Galerie öffnen →</div>
           </div>
         </div>
       </div>
@@ -707,7 +756,8 @@
           <img src="kleinkram/WhatsApp_Image_2026-04-09_at_22.26.53.jpeg" alt="Accessoires">
           <div class="kategorie-overlay">
             <span>Accessoires</span>
-            <small>3 Fotos ansehen</small>
+            <small>3 Fotos</small>
+            <div class="oeffnen">Galerie öffnen →</div>
           </div>
         </div>
       </div>
@@ -743,18 +793,31 @@
     <div class="kontakt-layout">
       <div class="kontakt-info">
         <div class="kontakt-item">
-          <div class="label">Adresse</div>
-          <div class="value"><a href="https://maps.google.com/?q=Schmilauer+Stra%C3%9Fe+18,+23909+Ratzeburg" target="_blank">Schmilauer Straße 18<br>23909 Ratzeburg</a></div>
+          <div class="kontakt-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5 14.5 7.62 14.5 9 13.38 11.5 12 11.5z"/></svg>
+          </div>
+          <div class="kontakt-item-text">
+            <div class="label">Adresse</div>
+            <div class="value"><a href="https://maps.google.com/?q=Schmilauer+Stra%C3%9Fe+18,+23909+Ratzeburg" target="_blank">Schmilauer Straße 18<br>23909 Ratzeburg</a></div>
+          </div>
         </div>
-        <div class="kontakt-sep"></div>
         <div class="kontakt-item">
-          <div class="label">Telefon</div>
-          <div class="value"><a href="tel:015754072952">0157 54072952</a></div>
+          <div class="kontakt-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          </div>
+          <div class="kontakt-item-text">
+            <div class="label">Telefon</div>
+            <div class="value"><a href="tel:015754072952">0157 54072952</a></div>
+          </div>
         </div>
-        <div class="kontakt-sep"></div>
         <div class="kontakt-item">
-          <div class="label">E-Mail</div>
-          <div class="value"><a href="mailto:michaela.breiholz@freenet.de">michaela.breiholz@freenet.de</a></div>
+          <div class="kontakt-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </div>
+          <div class="kontakt-item-text">
+            <div class="label">E-Mail</div>
+            <div class="value"><a href="mailto:michaela.breiholz@freenet.de">michaela.breiholz@freenet.de</a></div>
+          </div>
         </div>
       </div>
       <div class="kontakt-map">
