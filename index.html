@@ -61,7 +61,8 @@
 
     /* HERO */
     .hero {
-      background: linear-gradient(160deg, #8a5c3a 0%, #a87040 100%);
+      background: linear-gradient(160deg, rgba(138,92,58,0.92) 0%, rgba(168,112,64,0.92) 100%),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
       padding: 110px 40px;
       text-align: center;
       color: var(--creme);
@@ -104,6 +105,16 @@
     }
 
     .btn:hover { background: var(--hellgelb); }
+
+    /* WAVE DIVIDER */
+    .wave {
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+
+    .wave svg { display: block; }
 
     /* SECTIONS */
     section { padding: 80px 40px; }
@@ -180,7 +191,6 @@
     }
 
     .ueber-content .zitat {
-      text-align: center;
       font-size: 1.1rem;
       color: var(--braun);
       font-style: italic;
@@ -199,38 +209,6 @@
     /* GALERIE */
     #galerie { background: var(--creme); }
 
-    .galerie-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 14px;
-      max-width: 1080px;
-      margin: 0 auto;
-    }
-
-    .galerie-grid img {
-      width: 100%;
-      height: 230px;
-      object-fit: cover;
-      display: block;
-      transition: opacity 0.3s;
-    }
-
-    .galerie-grid img:hover { opacity: 0.9; }
-
-    .galerie-placeholder {
-      width: 100%;
-      height: 230px;
-      background: var(--warm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--helltext);
-      font-style: italic;
-      font-size: 0.88rem;
-      border: 1px dashed var(--gelb);
-    }
-
-    /* KATEGORIEN GALERIE */
     .kategorien-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -261,7 +239,6 @@
       background: linear-gradient(transparent, rgba(60,30,15,0.85));
       padding: 28px 16px 16px;
       color: var(--creme);
-      transition: background 0.3s;
     }
 
     .kategorie-overlay span {
@@ -349,16 +326,6 @@
       font-size: 0.85rem;
     }
 
-    @media (max-width: 768px) {
-      .kategorien-grid { grid-template-columns: 1fr 1fr; }
-    }
-
-    @media (max-width: 480px) {
-      .kategorien-grid { grid-template-columns: 1fr; }
-      .kategorie-vorschau img { height: 220px; }
-      #lb-img { max-width: 92vw; max-height: 65vh; }
-    }
-
     /* KONTAKT */
     #kontakt { background: var(--dunkelbraun); color: var(--creme); }
 
@@ -366,12 +333,16 @@
     #kontakt .section-subtitle { color: rgba(250,246,239,0.55); }
     #kontakt .divider { background: var(--gelb); }
 
-    .kontakt-content {
-      max-width: 560px;
+    .kontakt-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      max-width: 1000px;
       margin: 0 auto;
-      text-align: center;
+      align-items: start;
     }
 
+    .kontakt-info { text-align: center; }
     .kontakt-item { margin-bottom: 28px; }
 
     .kontakt-item .label {
@@ -402,6 +373,36 @@
       margin: 0 auto 28px;
     }
 
+    .kontakt-map iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      filter: sepia(20%) saturate(80%);
+    }
+
+    /* IMPRESSUM */
+    #impressum { background: var(--warm); }
+
+    .impressum-content {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .impressum-content p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .impressum-content h3 {
+      color: var(--braun);
+      font-size: 1rem;
+      font-weight: normal;
+      margin: 24px 0 8px;
+      letter-spacing: 0.5px;
+    }
+
     /* FOOTER */
     footer {
       background: #3a2010;
@@ -409,10 +410,63 @@
       text-align: center;
       padding: 22px 40px;
       font-size: 0.82rem;
-      letter-spacing: 0.3px;
     }
 
-    /* HAMBURGER MENU */
+    footer a {
+      color: rgba(250,246,239,0.5);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: rgba(250,246,239,0.8); }
+
+    /* WHATSAPP BUTTON */
+    .wa-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #25d366;
+      color: white;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      z-index: 200;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      transition: transform 0.2s;
+    }
+
+    .wa-btn:hover { transform: scale(1.1); }
+
+    .wa-btn svg { width: 28px; height: 28px; fill: white; }
+
+    /* ZURÜCK NACH OBEN */
+    .top-btn {
+      position: fixed;
+      bottom: 90px;
+      right: 24px;
+      background: rgba(92,61,42,0.85);
+      color: var(--creme);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 200;
+      border: none;
+      font-size: 1.1rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      transition: background 0.2s;
+    }
+
+    .top-btn.visible { display: flex; }
+    .top-btn:hover { background: var(--dunkelbraun); }
+
+    /* HAMBURGER */
     .hamburger {
       display: none;
       flex-direction: column;
@@ -442,6 +496,8 @@
       .hero h1 { font-size: 2.2rem; }
       section { padding: 60px 24px; }
       .leistungen-grid { grid-template-columns: 1fr 1fr; }
+      .kategorien-grid { grid-template-columns: 1fr 1fr; }
+      .kontakt-layout { grid-template-columns: 1fr; gap: 40px; }
     }
 
     /* MOBIL */
@@ -475,13 +531,17 @@
       .section-title { font-size: 1.4rem; }
 
       .leistungen-grid { grid-template-columns: 1fr; gap: 16px; }
-      .galerie-grid { grid-template-columns: 1fr 1fr; }
-      .galerie-placeholder { height: 160px; }
+      .kategorien-grid { grid-template-columns: 1fr; }
+      .kategorie-vorschau img { height: 220px; }
+      #lb-img { max-width: 92vw; max-height: 65vh; }
 
       .ueber-content p { font-size: 0.95rem; }
       .ueber-content .zitat { font-size: 1rem; }
 
       footer { font-size: 0.75rem; padding: 18px 16px; }
+
+      .wa-btn { bottom: 16px; right: 16px; }
+      .top-btn { bottom: 80px; right: 16px; }
     }
   </style>
 </head>
@@ -498,6 +558,7 @@
       <li><a href="#ueber" onclick="closeMenu()">Über mich</a></li>
       <li><a href="#galerie" onclick="closeMenu()">Galerie</a></li>
       <li><a href="#kontakt" onclick="closeMenu()">Kontakt</a></li>
+      <li><a href="#impressum" onclick="closeMenu()">Impressum</a></li>
     </ul>
   </nav>
 
@@ -507,6 +568,13 @@
     <p class="hero-sub">Handwerk mit Leidenschaft – Ratzeburg</p>
     <div class="hero-divider"></div>
     <a href="#leistungen" class="btn">Meine Leistungen</a>
+  </div>
+
+  <!-- WAVE -->
+  <div class="wave">
+    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:40px">
+      <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#faf6ef"/>
+    </svg>
   </div>
 
   <!-- LEISTUNGEN -->
@@ -542,46 +610,44 @@
     </div>
   </section>
 
+  <!-- WAVE -->
+  <div class="wave" style="background:var(--creme)">
+    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:40px">
+      <path d="M0,20 C480,60 960,0 1440,20 L1440,60 L0,60 Z" fill="#f2ebe0"/>
+    </svg>
+  </div>
+
   <!-- ÜBER MICH -->
   <section id="ueber">
     <h2 class="section-title">Über mich & meine Idee</h2>
     <p class="section-subtitle">Kreativ sein!</p>
     <div class="divider"></div>
     <div class="ueber-content">
-      <p>
-        Meine Idee ist es, dabei zu helfen, Fenster schön einzukleiden. In den meisten Fällen haben die Kunden schon eigene Wünsche und Vorstellungen, wie die Dekoration aussehen soll. So dass meine Aufgabe lediglich darin besteht, Stoffmengen zu kalkulieren, passende Faltenbänder zu empfehlen und die Aufhängung zu berücksichtigen. Und dann kann auch schon gemessen, geschnitten, genäht und gebügelt werden – dass einem nur so das Herz aufgeht!
-      </p>
-      <p>
-        Aber auch völlig ideenfreien Kunden kann geholfen werden. Durch ein Gespräch oder einen Besuch vor Ort, oder anhand von Fotos, kommt man meistens schnell zu einem richtig schönen Ergebnis.
-      </p>
-      <p>
-        Des Weiteren fertige ich auch Polsterbezüge in verschiedenen Varianten. Das Tolle ist, dass man diese ganz prima auf die Fensterdekoration abstimmen kann – oder umgekehrt. Inzwischen gibt es robuste Dekostoffe, die auch zum Beziehen von Möbeln geeignet sind.
-      </p>
-      <p>
-        Und last but not least kriegen wir dann auch noch die Stoffreste verwertet. Es lassen sich auch kleinere Stoffreste in Kissenhüllen, Tischwäsche, Taschen oder Lampenschirme verwandeln. Ideen gibt es genug!
-      </p>
-      <p>
-        Den Großteil meiner Aufträge bekomme ich von Raumausstattern, Architekten und Hotels. Sehr, sehr gerne nähe ich auch für Privatkunden, wo ich mit Erfahrung und eigenen Ideen unterstützen kann.
-      </p>
-      <p>
-        Ich habe 1986 eine Lehre als Polster- und Dekorationsnäherin absolviert und arbeite seitdem durchgehend in diesem Beruf. Im Oktober 2016 habe ich mich selbstständig gemacht – und es bringt mir sehr großen Spaß. Mein damaliges Hobby wurde also mein Brötchengeber!
-      </p>
-      <div class="zitat">
-        Mach dein Hobby zum Beruf und du brauchst nie wieder arbeiten!
-      </div>
+      <p>Meine Idee ist es, dabei zu helfen, Fenster schön einzukleiden. In den meisten Fällen haben die Kunden schon eigene Wünsche und Vorstellungen, wie die Dekoration aussehen soll. So dass meine Aufgabe lediglich darin besteht, Stoffmengen zu kalkulieren, passende Faltenbänder zu empfehlen und die Aufhängung zu berücksichtigen. Und dann kann auch schon gemessen, geschnitten, genäht und gebügelt werden – dass einem nur so das Herz aufgeht!</p>
+      <p>Aber auch völlig ideenfreien Kunden kann geholfen werden. Durch ein Gespräch oder einen Besuch vor Ort, oder anhand von Fotos, kommt man meistens schnell zu einem richtig schönen Ergebnis.</p>
+      <p>Des Weiteren fertige ich auch Polsterbezüge in verschiedenen Varianten. Das Tolle ist, dass man diese ganz prima auf die Fensterdekoration abstimmen kann – oder umgekehrt. Inzwischen gibt es robuste Dekostoffe, die auch zum Beziehen von Möbeln geeignet sind.</p>
+      <p>Und last but not least kriegen wir dann auch noch die Stoffreste verwertet. Es lassen sich auch kleinere Stoffreste in Kissenhüllen, Tischwäsche, Taschen oder Lampenschirme verwandeln. Ideen gibt es genug!</p>
+      <p>Den Großteil meiner Aufträge bekomme ich von Raumausstattern, Architekten und Hotels. Sehr, sehr gerne nähe ich auch für Privatkunden, wo ich mit Erfahrung und eigenen Ideen unterstützen kann.</p>
+      <p>Ich habe 1986 eine Lehre als Polster- und Dekorationsnäherin absolviert und arbeite seitdem durchgehend in diesem Beruf. Im Oktober 2016 habe ich mich selbstständig gemacht – und es bringt mir sehr großen Spaß. Mein damaliges Hobby wurde also mein Brötchengeber!</p>
+      <div class="zitat">Mach dein Hobby zum Beruf und du brauchst nie wieder arbeiten!</div>
       <p class="signatur">Herzliche Grüße, Ihre Michaela Breiholz</p>
     </div>
   </section>
+
+  <!-- WAVE -->
+  <div class="wave" style="background:var(--warm)">
+    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:40px">
+      <path d="M0,30 C360,0 1080,60 1440,30 L1440,60 L0,60 Z" fill="#faf6ef"/>
+    </svg>
+  </div>
 
   <!-- GALERIE -->
   <section id="galerie">
     <h2 class="section-title">Galerie</h2>
     <p class="section-subtitle">Einblicke in meine Arbeit</p>
     <div class="divider"></div>
-
     <div class="kategorien-grid">
 
-      <!-- KATEGORIE: Boot- & Campingpolster -->
       <div class="kategorie">
         <div class="kategorie-vorschau" onclick="openGalerie('polster')">
           <img src="polster/WhatsApp_Image_2026-04-09_at_21.34.50dfaga.jpeg" alt="Boot- & Campingpolster">
@@ -592,7 +658,6 @@
         </div>
       </div>
 
-      <!-- KATEGORIE: Strandkorb -->
       <div class="kategorie">
         <div class="kategorie-vorschau" onclick="openGalerie('strandkorb')">
           <img src="strandkorb/WhatsApp_Image_2026-04-09_at_21.58.57.jpeg" alt="Strandkorb">
@@ -603,18 +668,16 @@
         </div>
       </div>
 
-      <!-- KATEGORIE: Taschen -->
       <div class="kategorie">
         <div class="kategorie-vorschau" onclick="openGalerie('taschen')">
           <img src="taschen/WhatsApp_Image_2026-04-09_at_21.39.46.jpeg" alt="Taschen">
           <div class="kategorie-overlay">
             <span>Taschen</span>
-            <small>6 Fotos ansehen</small>
+            <small>9 Fotos ansehen</small>
           </div>
         </div>
       </div>
 
-      <!-- KATEGORIE: Autopolsterei -->
       <div class="kategorie">
         <div class="kategorie-vorschau" onclick="openGalerie('autopolsterei')">
           <img src="autopolsterei/WhatsApp_Image_2026-04-09_at_22.24.52.jpeg" alt="Autopolsterei">
@@ -625,13 +688,11 @@
         </div>
       </div>
 
-      <!-- KATEGORIE: Kleinkram -->
       <div class="kategorie">
-        <div class="kategorie-vorschau" onclick="openGalerie('kleinkram')">
-          <img src="kleinkram/WhatsApp_Image_2026-04-09_at_22.26.53.jpeg" alt="Kleinkram">
-
+        <div class="kategorie-vorschau" onclick="openGalerie('accessoires')">
+          <img src="kleinkram/WhatsApp_Image_2026-04-09_at_22.26.53.jpeg" alt="Accessoires">
           <div class="kategorie-overlay">
-            <span>Kleinkram</span>
+            <span>Accessoires</span>
             <small>3 Fotos ansehen</small>
           </div>
         </div>
@@ -653,33 +714,84 @@
     </div>
   </div>
 
+  <!-- WAVE -->
+  <div class="wave" style="background:var(--creme)">
+    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:40px">
+      <path d="M0,20 C480,0 960,60 1440,20 L1440,60 L0,60 Z" fill="#5c3d2a"/>
+    </svg>
+  </div>
+
   <!-- KONTAKT -->
   <section id="kontakt">
     <h2 class="section-title">Kontakt</h2>
     <p class="section-subtitle">Ich freue mich auf Ihre Nachricht</p>
     <div class="divider"></div>
-    <div class="kontakt-content">
-      <div class="kontakt-item">
-        <div class="label">Adresse</div>
-        <div class="value">Schmilauer Straße 18<br>23909 Ratzeburg</div>
+    <div class="kontakt-layout">
+      <div class="kontakt-info">
+        <div class="kontakt-item">
+          <div class="label">Adresse</div>
+          <div class="value">Schmilauer Straße 18<br>23909 Ratzeburg</div>
+        </div>
+        <div class="kontakt-sep"></div>
+        <div class="kontakt-item">
+          <div class="label">Telefon</div>
+          <div class="value"><a href="tel:015754072952">0157 54072952</a></div>
+        </div>
+        <div class="kontakt-sep"></div>
+        <div class="kontakt-item">
+          <div class="label">E-Mail</div>
+          <div class="value"><a href="mailto:michaela.breiholz@freenet.de">michaela.breiholz@freenet.de</a></div>
+        </div>
       </div>
-      <div class="kontakt-sep"></div>
-      <div class="kontakt-item">
-        <div class="label">Telefon</div>
-        <div class="value"><a href="tel:015754072952">0157 54072952</a></div>
+      <div class="kontakt-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2368.5!2d10.7497!3d53.7075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b27e8c3e3b4b4b%3A0x1!2sSchmilauer+Stra%C3%9Fe+18%2C+23909+Ratzeburg!5e0!3m2!1sde!2sde!4v1"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
       </div>
-      <div class="kontakt-sep"></div>
-      <div class="kontakt-item">
-        <div class="label">E-Mail</div>
-        <div class="value"><a href="mailto:michaela.breiholz@freenet.de">michaela.breiholz@freenet.de</a></div>
-      </div>
+    </div>
+  </section>
+
+  <!-- IMPRESSUM -->
+  <section id="impressum">
+    <h2 class="section-title">Impressum</h2>
+    <p class="section-subtitle">Angaben gemäß § 5 TMG</p>
+    <div class="divider"></div>
+    <div class="impressum-content">
+      <h3>Betreiberin</h3>
+      <p>Michaela Breiholz<br>Textile Verarbeitung – Nähwerkstatt<br>Schmilauer Straße 18<br>23909 Ratzeburg</p>
+
+      <h3>Kontakt</h3>
+      <p>Telefon: <a href="tel:015754072952" style="color:var(--braun)">0157 54072952</a><br>
+      E-Mail: <a href="mailto:michaela.breiholz@freenet.de" style="color:var(--braun)">michaela.breiholz@freenet.de</a></p>
+
+      <h3>Umsatzsteuer</h3>
+      <p>Kleinunternehmer gemäß § 19 UStG – es wird keine Umsatzsteuer berechnet.</p>
+
+      <h3>Haftung für Inhalte</h3>
+      <p>Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden.</p>
+
+      <h3>Bildrechte</h3>
+      <p>Alle auf dieser Website verwendeten Bilder sind eigene Aufnahmen von Michaela Breiholz.</p>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2026 Textile Verarbeitung · Nähwerkstatt Michaela Breiholz · Schmilauer Straße 18 · 23909 Ratzeburg</p>
+    <p>© 2026 Textile Verarbeitung · Nähwerkstatt Michaela Breiholz · Ratzeburg &nbsp;|&nbsp; <a href="#impressum">Impressum</a></p>
   </footer>
+
+  <!-- WHATSAPP BUTTON -->
+  <a class="wa-btn" href="https://wa.me/4915754072952" target="_blank" title="WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <!-- ZURÜCK NACH OBEN -->
+  <button class="top-btn" id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
   <script>
     function toggleMenu() {
@@ -688,6 +800,12 @@
     function closeMenu() {
       document.getElementById('navbar').classList.remove('nav-open');
     }
+
+    window.addEventListener('scroll', () => {
+      const btn = document.getElementById('topBtn');
+      if (window.scrollY > 400) btn.classList.add('visible');
+      else btn.classList.remove('visible');
+    });
 
     const galerien = {
       polster: [
@@ -709,21 +827,20 @@
         'taschen/WhatsApp_Image_2026-04-09_at_21.44.03.jpeg',
         'taschen/fsdfsdf.jpeg',
         'taschen/rwerewrwe.jpeg',
-        'taschen/WhatsApp Image 2026-04-09 at 22.20.15sfdas.jpeg',
-        'taschen/WhatsApp Image 2026-04-09 at 22.21.30asdfas.jpeg',
-        'taschen/WhatsApp Image 2026-04-09 at 22.21.30sdf.jpeg',
+        'taschen/WhatsApp_Image_2026-04-09_at_22.20.15sfdas.jpeg',
+        'taschen/WhatsApp_Image_2026-04-09_at_22.21.30asdfas.jpeg',
+        'taschen/WhatsApp_Image_2026-04-09_at_22.21.30sdf.jpeg',
       ],
       autopolsterei: [
         'autopolsterei/WhatsApp_Image_2026-04-09_at_22.24.52.jpeg',
         'autopolsterei/WhatsApp_Image_2026-04-09_at_22.24.52sdf.jpeg',
         'autopolsterei/sdfsf.jpeg',
       ],
-      kleinkram: [
+      accessoires: [
         'kleinkram/WhatsApp_Image_2026-04-09_at_22.26.53.jpeg',
         'kleinkram/WhatsApp_Image_2026-04-09_at_22.26.53sdfs.jpeg',
         'kleinkram/WhatsApp_Image_2026-04-09_at_22.26.53sdfsf.jpeg',
       ],
-
     };
 
     let aktuelleGalerie = [];
